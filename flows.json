@@ -1,0 +1,314 @@
+[
+    {
+        "id": "e3c552019310f9f7",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bc07f3a94569192f",
+        "type": "inject",
+        "z": "e3c552019310f9f7",
+        "name": "test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "demo/test",
+        "payload": "Xin chao Node-RED",
+        "payloadType": "str",
+        "x": 230,
+        "y": 440,
+        "wires": [
+            [
+                "ffb0f1789952e626"
+            ]
+        ]
+    },
+    {
+        "id": "65dc5a138f1fbc04",
+        "type": "debug",
+        "z": "e3c552019310f9f7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ffb0f1789952e626",
+        "type": "function",
+        "z": "e3c552019310f9f7",
+        "name": "function 1",
+        "func": "\nmsg.topic = \"citares/student\";\nmsg.payload = \"Toi dang hoc MQTT voi Node-RED\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 440,
+        "wires": [
+            [
+                "65dc5a138f1fbc04"
+            ]
+        ]
+    },
+    {
+        "id": "c1fa75847a94cf4e",
+        "type": "mqtt out",
+        "z": "e3c552019310f9f7",
+        "name": "A gửi cho B",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "64c18fe6d16491c1",
+        "x": 670,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "608352ed991e1cfa",
+        "type": "inject",
+        "z": "e3c552019310f9f7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "ee0665e4d1e5cc68"
+            ]
+        ]
+    },
+    {
+        "id": "ee0665e4d1e5cc68",
+        "type": "function",
+        "z": "e3c552019310f9f7",
+        "name": "function 2",
+        "func": "msg.topic = \"demo/a_to_b\";\nmsg.payload = \"Xin chào B\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "c1fa75847a94cf4e"
+            ]
+        ]
+    },
+    {
+        "id": "1786f59d4ffc0305",
+        "type": "debug",
+        "z": "e3c552019310f9f7",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e0c6b6a0e17d78cd",
+        "type": "mqtt in",
+        "z": "e3c552019310f9f7",
+        "name": "B nhận từ A",
+        "topic": "demo/a_to_b",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "64c18fe6d16491c1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "1786f59d4ffc0305"
+            ]
+        ]
+    },
+    {
+        "id": "b6b2fc44f57ce40e",
+        "type": "mqtt out",
+        "z": "e3c552019310f9f7",
+        "name": "B phản hồi A",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "64c18fe6d16491c1",
+        "x": 750,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "a5b333642b16e00e",
+        "type": "inject",
+        "z": "e3c552019310f9f7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 190,
+        "y": 600,
+        "wires": [
+            [
+                "6659a15b04ba2f48"
+            ]
+        ]
+    },
+    {
+        "id": "6659a15b04ba2f48",
+        "type": "function",
+        "z": "e3c552019310f9f7",
+        "name": "function 3",
+        "func": "msg.topic = \"demo/b_to_a\";\nmsg.payload = \"B đã nhận được tin nhắn\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 600,
+        "wires": [
+            [
+                "b6b2fc44f57ce40e"
+            ]
+        ]
+    },
+    {
+        "id": "96c2e56676c0ee8c",
+        "type": "mqtt in",
+        "z": "e3c552019310f9f7",
+        "name": "A nhận từ B",
+        "topic": "demo/b_to_a",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "64c18fe6d16491c1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 700,
+        "wires": [
+            [
+                "eb9146538b43ddda"
+            ]
+        ]
+    },
+    {
+        "id": "eb9146538b43ddda",
+        "type": "debug",
+        "z": "e3c552019310f9f7",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "64c18fe6d16491c1",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
